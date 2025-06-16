@@ -34,25 +34,39 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-</head>
- <style>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .banner-container {
+      width: 100%;
+      overflow: hidden;
+    }
+
     .responsive-banner {
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  display: block;
-  object-fit: cover; /* Optional: ensures it fills the box nicely */
-}
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      display: block;
+      object-fit: cover;
+    }
 
-/* Optional media query if you want to tweak specifically for phones */
-@media only screen and (max-width: 400px) {
-  .responsive-banner {
-    /* If needed, you can add custom styles here */
-    object-fit: contain;
-  }
-}
-
+    /* Optional: full height banner for phones */
+    @media only screen and (max-width: 600px) {
+      .responsive-banner {
+        height: auto; /* or use: height: 300px; to fix height */
+        object-fit: contain;
+      }
+    }
   </style>
+</head>
 <body class="index-page">
 
   <header id="header" class="header dark-background d-flex flex-column">
