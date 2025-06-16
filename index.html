@@ -34,6 +34,24 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <style>
+    .responsive-banner {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+  object-fit: cover; /* Optional: ensures it fills the box nicely */
+}
+
+/* Optional media query if you want to tweak specifically for phones */
+@media only screen and (max-width: 600px) {
+  .responsive-banner {
+    /* If needed, you can add custom styles here */
+    object-fit: contain;
+  }
+}
+
+  </style>
 </head>
 
 <body class="index-page">
@@ -94,7 +112,8 @@
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
 
-      <img src="assets/img/bannerimage.avif" alt="" data-aos="fade-in" class="">
+<img src="assets/img/bannerimage.avif" alt="" data-aos="fade-in" class="responsive-banner">
+
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <h2>Mohd Kashan</h2>
