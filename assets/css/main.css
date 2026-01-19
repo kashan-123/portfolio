@@ -1273,3 +1273,38 @@ section,
 .starter-section {
   /* Add your styles here */
 }
+
+.contact-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.contact-info .info-item {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.contact-info i {
+  font-size: 22px;
+  color: #0d6efd;
+}
+
+.contact-info h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.contact-info p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.contact-form .form-control {
+  border-radius: 10px;
+  padding: 10px 14px;
+}
