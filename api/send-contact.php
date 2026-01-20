@@ -1,16 +1,19 @@
 <?php
 
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST");
+header("Content-Type: text/plain");
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require __DIR__ . '/vendor/autoload.php';
 
-
-// Load SMTP settings
 $env = parse_ini_file(__DIR__ . '/.env');
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    exit('Invalid request');
+    http_response_code(405);
+    exit('Method Not Allowed');
 }
 
 $name    = trim($_POST['name'] ?? '');
@@ -23,6 +26,7 @@ if (!$name || !$email || !$subject || !$message) {
 }
 
 try {
+
     /* ================= ADMIN EMAIL ================= */
     $mail = new PHPMailer(true);
     $mail->isSMTP();
@@ -66,31 +70,28 @@ try {
     $reply->isHTML(true);
     $reply->Subject = "Thanks for contacting me";
     $reply->Body = "
-    <p>Hi {$name},</p>
+        <p>Hi {$name},</p>
 
-    <p>
-        Thank you for reaching out. I’ve received your message and will respond as soon as possible.
-    </p>
+        <p>
+            Thank you for reaching out. I’ve received your message and will respond as soon as possible.
+        </p>
 
-    <p>
-        You can also check out my work here:
-        <br>
-        🔗 <a href='https://kashan-123.github.io/portfolio/' target='_blank'>
-        Visit My Portfolio</a>
-    </p>
+        <p>
+            🔗 <a href='https://kashan-123.github.io/portfolio/' target='_blank'>
+            Visit My Portfolio</a>
+        </p>
 
-    <br>
-
-    <p>
-        Best regards,<br>
-        <strong>{$env['MAIL_FROM_NAME']}</strong>
-    </p>
-";
-
+        <p>
+            Best regards,<br>
+            <strong>{$env['MAIL_FROM_NAME']}</strong>
+        </p>
+    ";
 
     $reply->send();
 
     echo "OK";
+
 } catch (Exception $e) {
+    http_response_code(500);
     echo "Mail Error: " . $e->getMessage();
 }
