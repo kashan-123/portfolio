@@ -672,7 +672,7 @@ I enjoy solving complex problems, collaborating with teams, and continuously lea
 
         <!-- RIGHT FORM -->
         <div class="col-lg-7">
-            <form class="contact-form" method="POST" action="https://kashan-123.github.io/portfolio/send-contact.php">
+            <form class="contact-form" method="POST" action="https://kashan-123.github.io/portfolio/api/send-contact.php">
               <div class="row gy-3">
 
                 <div class="col-md-6">
@@ -749,41 +749,42 @@ I enjoy solving complex problems, collaborating with teams, and continuously lea
 
 
  
-  <script>
-    document.querySelector('.contact-form').addEventListener('submit', function(e) {
-      e.preventDefault();
+<script>
+document.querySelector('.contact-form').addEventListener('submit', function(e) {
+  e.preventDefault();
 
-      let form = this;
-      let loading = form.querySelector('.loading');
-      let error = form.querySelector('.error-message');
-      let success = form.querySelector('.sent-message');
+  let form = this;
+  let loading = form.querySelector('.loading');
+  let error = form.querySelector('.error-message');
+  let success = form.querySelector('.sent-message');
 
-      loading.classList.remove('d-none');
-      error.classList.add('d-none');
-      success.classList.add('d-none');
+  loading.classList.remove('d-none');
+  error.classList.add('d-none');
+  success.classList.add('d-none');
 
-      fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form)
-        })
-        .then(res => res.text())
-        .then(data => {
-          loading.classList.add('d-none');
-          if (data.trim() === 'OK') {
-            success.classList.remove('d-none');
-            form.reset();
-          } else {
-            error.textContent = data;
-            error.classList.remove('d-none');
-          }
-        })
-        .catch(() => {
-          loading.classList.add('d-none');
-          error.textContent = 'Something went wrong!';
-          error.classList.remove('d-none');
-        });
-    });
-  </script>
+  fetch(form.action, {
+    method: 'POST',
+    body: new FormData(form)
+  })
+  .then(res => res.text())
+  .then(data => {
+    loading.classList.add('d-none');
+    if (data.trim() === 'OK') {
+      success.classList.remove('d-none');
+      form.reset();
+    } else {
+      error.textContent = data;
+      error.classList.remove('d-none');
+    }
+  })
+  .catch(() => {
+    loading.classList.add('d-none');
+    error.textContent = 'Something went wrong!';
+    error.classList.remove('d-none');
+  });
+});
+</script>
+
 
 </body>
 
